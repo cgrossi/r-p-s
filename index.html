@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Rock, Paper, Scissors</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <script>
+        const computerPlay = function(){
+            let picks = ['Rock', 'Paper', 'Scissors']
+            return picks[Math.floor(Math.random()*3)]
+        }
+        const playerPlay = function() {
+            let userInput = prompt('Pick rock, paper, or scissors').toLowerCase()
+            return userInput
+        }
+
+        const rps = function (playerSelection, computerSelection) {
+
+            let p = playerSelection.toLowerCase()
+            let c = computerSelection.toLowerCase()
+            if (p === 'rock') {
+                if(c === 'scissors') {
+                    return `You win!`
+                } else if (c === 'paper') {
+                    return 'You lose!'
+                } else {
+                    return "It's a draw!"
+                }
+
+            }
+            if(p === 'scissors') {
+                if(c === 'paper') {
+                    return 'You win!'
+                } else if (c === 'rock') {
+                    return 'You lose!'
+                } else {
+                    return "It's a draw!"
+                }
+            }
+            if (p === 'paper') {
+                if(c === 'scissors') {
+                    return 'You lose!'
+                } else if (c === 'rock') {
+                    return 'You win!'
+                } else {
+                    return "It's a draw!"
+                }
+            }
+        }
+        
+        const game = function () {
+            let playerScore = 0
+            let computerScore = 0
+            let decision = ''
+            for(let i = 0;i < 5;i++) {
+
+                let playerSelection  = playerPlay()
+                let computerSelection = computerPlay()
+                let result = rps(playerSelection, computerSelection)
+
+                if (result === 'You win!') {
+                    playerScore++
+                    console.log(result)
+                } else if (result === 'You lose!') {
+                    console.log(result)
+                    computerScore++
+                }
+            }
+
+            if(playerScore > computerScore) {
+                decision = 'You are the winner!'
+            } else if (computerScore > playerScore) {
+                decision = 'You are the loser!'
+            } else {
+                decision = 'It is a draw!'
+            }
+
+            console.log(`After 5 rounds of play your score is ${playerScore} and the computers score is ${computerScore}. ${decision}`)
+        }
+        game()
+        
+        </script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+    </body>
+</html>
