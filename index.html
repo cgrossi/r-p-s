@@ -9,7 +9,6 @@
         <title>Rock, Paper, Scissors</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
         <script>
         const computerPlay = function(){
             let picks = ['Rock', 'Paper', 'Scissors']
@@ -20,7 +19,7 @@
             return userInput
         }
 
-        const rps = function (playerSelection, computerSelection) {
+        const singleRound = function (playerSelection, computerSelection) {
 
             let p = playerSelection.toLowerCase()
             let c = computerSelection.toLowerCase()
@@ -62,7 +61,7 @@
 
                 let playerSelection  = playerPlay()
                 let computerSelection = computerPlay()
-                let result = rps(playerSelection, computerSelection)
+                let result = singleRound(playerSelection, computerSelection)
 
                 if (result === 'You win!') {
                     playerScore++
@@ -70,6 +69,8 @@
                 } else if (result === 'You lose!') {
                     console.log(result)
                     computerScore++
+                } else {
+                    console.log(result)
                 }
             }
 
@@ -83,7 +84,6 @@
 
             console.log(`After 5 rounds of play your score is ${playerScore} and the computers score is ${computerScore}. ${decision}`)
         }
-        game()
         
         </script>
     </head>
